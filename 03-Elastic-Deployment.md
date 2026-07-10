@@ -3,7 +3,7 @@
 | Field				      | Value    	   				|
 |-------------------|---------------------|
 | Document Name 	  | Elastic Deployment  |
-| Document Version 	| v0.1.0 							|
+| Document Version 	| v0.1.1 							|
 | Author			      | Terry Humphrey 			|
 | Status 		      	| Active 							|
 | Last Updated 		  | 2026-07-09 					|
@@ -50,7 +50,7 @@ This is a Rocky Linux 9.8 virtual machine named `elastic-node-01.serenity.lab`. 
 | elastic-node-01.serenity.lab  | Rocky Linux      | 2 vCPU    | 8 GB   | 100 GB    | 192.168.1.220  |  NAT         | 2222       |
 
 
-![Virtual Machines](../screenshots/03-Elastic-Deployment/01-virtualbox-vm-configuration.png)
+![Virtual Machines](/screenshots/03-Elastic-Deployment/01-virtualbox-vm-configuration.png)
 
 ---
 ## Configuration Steps
@@ -62,7 +62,7 @@ This section goes over each specific configuration step of the server, line by l
 1. Partitioning: Automatic
 2. Software Installation: Minimal Server Install
 
-![Rocky Linux Login](../screenshots/03-Elastic-Deployment/02-rocky-linux-login.png)
+![Rocky Linux Login](/screenshots/03-Elastic-Deployment/02-rocky-linux-login.png)
 
 ### 2. System Configuration
 
@@ -72,7 +72,7 @@ sudo hostnamectl set-hostname elastic-node-01.serenity.lab
 ```
 *Reason:* Sets a descriptive hostname so the node is identifiable on the network and in logs. `elastic-node-01` describes the server; `serenity.lab` is the unique identifier used across all homelab items.
 
-![hostnamectl output](../screenshots/03-Elastic-Deployment/03-hostnamectl-output.png)
+![hostnamectl output](/screenshots/03-Elastic-Deployment/03-hostnamectl-output.png)
 
 **2. Update the system**
 ```bash
@@ -183,7 +183,7 @@ docker compose version
 ```
 *Reason:* Confirms Docker Compose is installed by checking its version.
 
-![docker installed](../screenshots/03-Elastic-Deployment/04-docker-installed.png)
+![docker installed](/screenshots/03-Elastic-Deployment/04-docker-installed.png)
 
 ### 4. Create the Elastic Stack Directory
 
@@ -268,7 +268,7 @@ volumes:
 - `volumes` — top-level declaration of named volumes used by the services
   - `esdata` — the persistent volume used by Elasticsearch
 
-![Docker Compose File](../screenshots/03-Elastic-Deployment/05-docker-compose-file.png)
+![Docker Compose File](/screenshots/03-Elastic-Deployment/05-docker-compose-file.png)
 
 **3. Start the stack**
 ```bash
@@ -291,7 +291,7 @@ Two running containers should be displayed:
 
 Both containers should report a status of Up.
 
-![docker ps](../screenshots/03-Elastic-Deployment/06-docker-containers-running.png)
+![docker ps](/screenshots/03-Elastic-Deployment/06-docker-containers-running.png)
 
 **5. Verify Elasticsearch**
 ```bash
@@ -306,9 +306,9 @@ From a separate machine, open a web browser and navigate to the following URLs:
 - **Kibana:** `http://192.168.1.220:5601`
 - **Elasticsearch:** `http://192.168.1.220:9200`
 
-![Kibanaa Validation](../screenshots/03-Elastic-Deployment/08-kibana-homepage.png)
+![Kibanaa Validation](/screenshots/03-Elastic-Deployment/08-kibana-homepage.png)
 
-![Elasticsearch Validation](../screenshots/03-Elastic-Deployment/09-elasticsearch-browser-response.png)
+![Elasticsearch Validation](/screenshots/03-Elastic-Deployment/09-elasticsearch-browser-response.png)
 
 
 
@@ -335,5 +335,6 @@ From a separate machine, open a web browser and navigate to the following URLs:
 | Version | Date	  		| Changes 									                           	|
 |---------|-------------|-------------------------------------------------------|
 | v0.1.0  | 2026-07-09  | Initial Elastic Deployment documentation published    |
+| v0.1.1  | 2026-07-09  | Minor updates to wording and pathing                  |
 
 ---	
