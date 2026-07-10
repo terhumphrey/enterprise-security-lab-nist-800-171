@@ -3,10 +3,10 @@
 | Field	            | Value 									|
 |-------------------|-------------------------------------------|
 | Document Name     | ELK Stack SIEM Home Lab Initial Design    |
-| Document Version  | v0.1.0 									|
+| Document Version  | v0.1.1 									|
 | Author	        | Terry Humphrey 							|
 | Status            | Active 								    |
-| Last Updated 	    | 2026-07-09 								|
+| Last Updated 	    | 2026-07-10 								|
 
 ---
 
@@ -465,26 +465,27 @@ The lab will be considered successful when it can:
 
 # 14. Related Documentation
 
-| Document 					| Purpose 																																	|
-|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| README.md					| Provides a high-level overview of the ELK Stack SIEM Home Lab, including objectives, architecture, technologies, and documentation index.	|
-| 01-Architecture.md		| Defines the lab architecture, infrastructure, networking, identity services, Elastic components, and system relationships.				|
-| 03-Elastic-Deployment.md 	| Documents the installation and deployment of Elasticsearch, Kibana, and Fleet Server.														|
-| 04-Kibana-Fleet-Setup.md 	| Documents Kibana configuration, Fleet Server setup, Elastic Agent enrollment, integrations, policies, and dashboards.						|
-| 05-Windows-AD.md 			| Documents Active Directory, DNS, organizational structure, and identity management configuration.											|
-| 06-Windows-Agent.md 		| Documents the deployment, enrollment, and configuration of Elastic Agents on Windows endpoints.											|
-| 07-Sysmon.md 				| Documents Sysmon installation, configuration, and Windows endpoint visibility improvements.												|
-| 08-Elastic-Security.md 	| Documents Elastic Security configuration, including detections, alerts, cases, and analyst workflows.										|
-| 09-Detection-Rules.md 	| Documents custom detection rules, testing procedures, and MITRE ATT&CK mappings.															|
-| 10-Incident-Response.md 	| Documents incident response workflows, investigations, evidence collection, and lessons learned.											|
-| 99-Lab-Journal.md			| Documents lab progress, implementation activities, troubleshooting, decisions, and lessons learned.										|
+| Document 					        | Purpose 																																	                    |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| README.md					        | Provides a high-level overview of the ELK Stack SIEM Home Lab, including objectives, architecture, technologies, and documentation index.	                    |
+| 01-Architecture.md		        | Defines the lab architecture, infrastructure, networking, identity services, Elastic components, and system relationships.				                    |
+| 03-Elastic-Deployment.md 	        | Documents the installation and deployment of Elasticsearch, Kibana, Docker, and the initial Elastic Stack environment.					                    |
+| 04-Elastic-Fleet-Deployment.md    | Documents Elastic Fleet deployment, Fleet Server configuration, Elastic Agent enrollment, agent policies, integrations, and centralized endpoint management.  |
+| 05-Windows-AD.md 			        | Documents Active Directory, DNS, organizational structure, and identity management configuration.											                    |
+| 06-Windows-Agent.md 		        | Documents the deployment, enrollment, and configuration of Elastic Agents on Windows endpoints.											                    |
+| 07-Sysmon.md 				        | Documents Sysmon installation, configuration, and Windows endpoint visibility improvements.												                    |
+| 08-Elastic-Security.md 	        | Documents Elastic Security configuration, including detections, alerts, cases, and analyst workflows.										                    |
+| 09-Detection-Rules.md 	        | Documents custom detection rules, testing procedures, and MITRE ATT&CK mappings.															                    |
+| 10-Incident-Response.md 	        | Documents incident response workflows, investigations, evidence collection, and lessons learned.											                    |
+| 99-Lab-Journal.md			        | Documents lab progress, implementation activities, troubleshooting, decisions, and lessons learned.										                    |
 
 ---
 
 # Revision History
 
-| Version   | Date 			| Changes 							|
-|-----------|---------------|-----------------------------------|
-| v0.1.0    | 2026-07-09    | Initial design document published |
+| Version   | Date 			| Changes 							        |
+|-----------|---------------|-------------------------------------------|
+| v0.1.0    | 2026-07-09    | Initial design document published         |
+| v0.1.1	| 2026-07-10	| Updated Related documentation section.    |
 
 ---	

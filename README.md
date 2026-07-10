@@ -90,7 +90,7 @@ ROOT --> DOCUMENTATION["docs/"]
 DOCUMENTATION --> D01["01-Architecture.md"]
 DOCUMENTATION --> D02["02-Initial-Design.md"]
 DOCUMENTATION --> D03["03-Elastic-Deployment.md"]
-DOCUMENTATION --> D04["04-Kibana-Fleet-Setup.md"]
+DOCUMENTATION --> D04["04-Elastic-Fleet-Deployment.md"]
 DOCUMENTATION --> D05["05-Windows-AD.md"]
 DOCUMENTATION --> D06["06-Windows-Agent.md"]
 DOCUMENTATION --> D07["07-Sysmon.md"]
@@ -106,19 +106,19 @@ DOCUMENTATION --> CONFIGS["configs/"]
 
 # Documentation
 
-| Document                  | Description                                                                                                           |
-|---------------------------|-----------------------------------------------------------------------------------------------------------------------|
-| 01-Architecture.md        | Documents the overall architecture, infrastructure, networking, identity services, and system relationships.          |
-| 02-Initial-Design.md      | Documents the original objectives, requirements, constraints, technology selections, and architectural decisions.     |
-| 03-Elastic-Deployment.md  | Documents the installation and deployment of Elasticsearch, Kibana, and Fleet Server.                                 |
-| 04-Kibana-Fleet-Setup.md  | Documents Kibana configuration, Fleet Server setup, Elastic Agent enrollment, integrations, policies, and dashboards. |
-| 05-Windows-AD.md          | Documents Active Directory, DNS, organizational structure, and identity management configuration.                     |
-| 06-Windows-Agent.md       | Documents the deployment, enrollment, and configuration of Elastic Agents on Windows endpoints.                       |
-| 07-Sysmon.md              | Documents Sysmon installation, configuration, and Windows endpoint visibility improvements.                           |
-| 08-Elastic-Security.md    | Documents Elastic Security configuration, including detections, alerts, cases, and analyst workflows.                 |
-| 09-Detection-Rules.md     | Documents custom detection rules, testing procedures, and MITRE ATT&CK mappings.                                      |
-| 10-Incident-Response.md   | Documents incident response workflows, investigations, evidence collection, and lessons learned.                      |
-| 99-Lab-Journal.md         | Documents implementation progress, troubleshooting, design decisions, and lessons learned throughout the project.     |
+| Document                          | Description                                                                                                                                                   |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 01-Architecture.md                | Documents the overall architecture, infrastructure, networking, identity services, and system relationships.                                                  |
+| 02-Initial-Design.md              | Documents the original objectives, requirements, constraints, technology selections, and architectural decisions.                                             |
+| 03-Elastic-Deployment.md          | Documents the installation and deployment of Elasticsearch, Kibana, Docker, and the initial Elastic Stack environment.                                        |
+| 04-Elastic-Fleet-Deployment.md    | Documents Elastic Fleet deployment, Fleet Server configuration, Elastic Agent enrollment, agent policies, integrations, and centralized endpoint management.  |
+| 05-Windows-AD.md                  | Documents Active Directory, DNS, organizational structure, and identity management configuration.                                                             |
+| 06-Windows-Agent.md               | Documents the deployment, enrollment, and configuration of Elastic Agents on Windows endpoints.                                                               |
+| 07-Sysmon.md                      | Documents Sysmon installation, configuration, and Windows endpoint visibility improvements.                                                                   |
+| 08-Elastic-Security.md            | Documents Elastic Security configuration, including detections, alerts, cases, and analyst workflows.                                                         |
+| 09-Detection-Rules.md             | Documents custom detection rules, testing procedures, and MITRE ATT&CK mappings.                                                                              |
+| 10-Incident-Response.md           | Documents incident response workflows, investigations, evidence collection, and lessons learned.                                                              |
+| 99-Lab-Journal.md                 | Documents implementation progress, troubleshooting, design decisions, and lessons learned throughout the project.                                             |
 
 ---
 
@@ -322,7 +322,7 @@ The documentation is organized in the recommended review order used to understan
 
 3. Elastic Deployment
 
-4. Kibana Fleet Setup
+4. Elastic Fleet Deployment
 
 5. Windows Active Directory
 
