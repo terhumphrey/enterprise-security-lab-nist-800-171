@@ -3,7 +3,7 @@
 | Field				      | Value    	   				|
 |-------------------|---------------------|
 | Document Name 	  | Elastic Deployment  |
-| Document Version 	| v0.1.1 							|
+| Document Version 	| v0.1.0 							|
 | Author			      | Terry Humphrey 			|
 | Status 		      	| Active 							|
 | Last Updated 		  | 2026-07-09 					|
@@ -306,9 +306,9 @@ From a separate machine, open a web browser and navigate to the following URLs:
 - **Kibana:** `http://192.168.1.220:5601`
 - **Elasticsearch:** `http://192.168.1.220:9200`
 
-![Kibanaa Validation](/screenshots/03-Elastic-Deployment/08-kibana-homepage.png)
+![Kibanaa Validation](/screenshots/03-Elastic-Deployment/07-kibana-homepage.png)
 
-![Elasticsearch Validation](/screenshots/03-Elastic-Deployment/09-elasticsearch-browser-response.png)
+![Elasticsearch Validation](/screenshots/03-Elastic-Deployment/08-elasticsearch-browser-response.png)
 
 
 
@@ -335,6 +335,6 @@ From a separate machine, open a web browser and navigate to the following URLs:
 | Version | Date	  		| Changes 									                           	|
 |---------|-------------|-------------------------------------------------------|
 | v0.1.0  | 2026-07-09  | Initial Elastic Deployment documentation published    |
-| v0.1.1  | 2026-07-09  | Minor updates to wording and pathing                  |
+
 
 ---	
