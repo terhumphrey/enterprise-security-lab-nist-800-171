@@ -1,8 +1,8 @@
-# Elastic Stack SIEM Home Lab
+# Enterprise Security Lab: ELK SIEM, Detection Engineering & NIST SP 800-171 Documentation 
 
 ![Status](https://img.shields.io/badge/status-active%20development-blue)
 
-A hands-on cybersecurity home lab implementing Elastic SIEM, Active Directory, endpoint monitoring, detection engineering, and incident response workflows.
+This repository documents the design, implementation, and operation of an enterprise-inspired security monitoring environment using the Elastic Stack. It includes architecture documentation, deployment guides, operational procedures, and the ongoing development of NIST SP 800-171 security control documentation.
 
 ---
 
@@ -28,7 +28,7 @@ A hands-on cybersecurity home lab implementing Elastic SIEM, Active Directory, e
 
 # Project Overview
 
-The Elastic Stack SIEM Home Lab is a self-hosted cybersecurity training environment. It is designed to simulate the technologies and workflows that are commonly found in small enterprise Security Operations Centers (SOC).
+The Enterprise Security Lab is a self-hosted cybersecurity training environment. It is designed to simulate the technologies and workflows that are commonly found in small enterprise Security Operations Centers (SOC).
 
 The primary goal of this project is to develop practical, hands-on experience with SIEM administration, centralized logging, endpoint monitoring, Active Directory, detection engineering, and incident response while producing professional documentation that demonstrates the design, implementation, and operation of the environment.
 
@@ -83,7 +83,7 @@ This repository documents the complete lifecycle of the lab, including the initi
 
 ```mermaid
 flowchart TD
-ROOT["elk-siem-home-lab"]
+ROOT["enterprise-security-lab-nist-800-171"]
 ROOT --> README["README.md"]
 ROOT --> LICENSE["LICENSE"]
 ROOT --> DOCUMENTATION["docs/"]
