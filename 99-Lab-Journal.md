@@ -5,35 +5,36 @@
 
 ## Version History
 
-| Version       | Date          | Highlights                |
-|---------------|---------------|---------------------------|
-| v0.1.0		| 2026-07-02    | Intitial Setup            |
-| v0.2.0		| 2026-07-06    | Elastic Setup             |
-| v0.3.0		| 2026-07-07    | Windows Deployment        |
-| v0.4.0        | 2026-07-13    | AD Structure              |
-| v0.5.0        | 2026-07-17    | Lab Architecture Redesign |
+| Version       | Date          | Highlights                    |
+|---------------|---------------|-------------------------------|
+| v0.1.0		| 2026-07-02    | Intitial Setup                |
+| v0.2.0		| 2026-07-06    | Elastic Setup                 |
+| v0.3.0		| 2026-07-07    | Windows Deployment            |
+| v0.4.0        | 2026-07-13    | AD Structure                  |
+| v0.5.0        | 2026-07-17    | Lab Architecture Redesign     |
+| v.6.0         | 2026-07-20    | Sysmon and Detection Rules    |
 
 ## Overall Status
 
-| Component | Status |
-| ----------------|-----------|
-| Rocky Linux Install | Finished and Validated |
-| Docker | Finished and Validated |
-| Elasticsearch | Finished and Validated |
-| Kibana | Finished and Validated |
-| Fleet Server | Finished and Validated |
-| Elastic Agent | Finished and Validated |
-| System Integration | Finished and Validated |
-| Linux Log Collection | Not Started |
-| Linux Metrics | Not Started |
-| Custom Dashboards | Currently Being Built |
-| Windows Server 2025 Deployment | Finished and Validated |
-| Windows Server 2025 DC Promo | Finished and Validated |
-| Windows 11 Workstation Deployment | Finished and Validated |
-| Windows 11 Workstation Configuration | Finished and Validated |
-| Sysmon | Waiting on Dependency |
-| Detection Rules | Waiting on Dependency |
-| Attack Simulations | Waiting on Dependency |
+| Component | Status                                             |
+| --------------------------------------|------------------------|
+| Rocky Linux Install                   | Finished and Validated |
+| Docker                                | Finished and Validated |
+| Elasticsearch                         | Finished and Validated |
+| Kibana                                | Finished and Validated |
+| Fleet Server                          | Finished and Validated |
+| Elastic Agent                         | Finished and Validated |
+| System Integration                    | Finished and Validated |
+| Linux Log Collection                  | Not Started            |
+| Linux Metrics                         | Not Started            |
+| Custom Dashboards                     | Currently Being Built  |
+| Windows Server 2025 Deployment        | Finished and Validated |
+| Windows Server 2025 DC Promo          | Finished and Validated |
+| Windows 11 Workstation Deployment     | Finished and Validated |
+| Windows 11 Workstation Configuration  | Finished and Validated |
+| Sysmon                                | Finished and Validated |
+| Detection Rules Phase 1               | Finished and Validated |
+| Attack Simulations                    | Waiting on Dependency  |
 ---
 
 # Current Architecture
@@ -57,6 +58,21 @@
 | Microsoft AD CS   | Internal PKI                  |
 
 # Journal Entries
+
+## 2026-07-20
+
+### Completed
+- Sysmon installed on WIN-PRO-01
+- Detection Rules setup and validated
+
+### Issues Encountered
+- Alerts not triggering for Powershell
+
+### Lessons Learned
+- Syntax is very strict when it comes to building log sources and queries.
+
+### Next Steps
+- Update documentation to reflect the work completed so far.
 
 ## 2026-07-17
 
