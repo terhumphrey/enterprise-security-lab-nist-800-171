@@ -175,8 +175,8 @@ This project is actively under development. Documentation is published increment
 Completed documentation represents implemented and validated capabilities. Documents marked as in progress may contain partial configurations, design decisions, and planned implementation details.
 
 
-| Document                          | Status         | Notes                                                                                                                |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| Document                          | Status        | Notes                                                                                                                 |
+|-----------------------------------|---------------|-----------------------------------------------------------------------------------------------------------------------|
 | 01-Architecture.md                | In Progress   | The published version of this document still reflects the original architecture.                                      |
 | 02-Network-Design.md              | Planned       |                                                                                                                       |
 | 03-Asset-Inventory.md             | Planned       |                                                                                                                       |
