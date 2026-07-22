@@ -4,6 +4,10 @@
 
 This repository documents the design, implementation, and operation of an enterprise-inspired security monitoring environment using the Elastic Stack. It includes architecture documentation, deployment guides, operational procedures, and the ongoing development of NIST SP 800-171 security control documentation.
 
+**Note:** During the development of this lab, I expanded the scope to better align with my strategic learning objectives. When assessing the environment as part of that scope expansion, I determined that the existing lab architecture would create additional limitations as the scope expanded.
+
+Rather than continue modifying an environment that was not designed for the long-term goals of the project, I used the opportunity to redesign the lab architecture from the ground up. As such, there are still existing documentation artifacts on GitHub that reflect the old lab architecture. I have noted those spots in the documentation status section.
+
 ---
 
 ## Table of Contents
@@ -32,7 +36,7 @@ The Enterprise Security Lab is a self-hosted cybersecurity training environment.
 
 The primary goal of this project is to develop practical, hands-on experience with SIEM administration, centralized logging, endpoint monitoring, Active Directory, detection engineering, and incident response while producing professional documentation that demonstrates the design, implementation, and operation of the environment.
 
-This repository documents the complete lifecycle of the lab, including the initial design, deployment, configuration, security monitoring, and future enhancements.
+This repository documents the ongoing lifecycle of the lab, including architecture design, deployment, configuration, security monitoring, validation, and planned enhancements.
 
 ---
 
@@ -75,7 +79,7 @@ This repository documents the complete lifecycle of the lab, including the initi
 - Elastic Agent
 - Active Directory
 - DNS
-- Sysmon (Planned)
+- Sysmon 
 
 ---
 
@@ -87,38 +91,58 @@ ROOT["enterprise-security-lab-nist-800-171"]
 ROOT --> README["README.md"]
 ROOT --> LICENSE["LICENSE"]
 ROOT --> DOCUMENTATION["docs/"]
+ROOT --> SCRIPTS["scripts/"]
+ROOT --> SCREENSHOTS["screenshots/"]
 DOCUMENTATION --> D01["01-Architecture.md"]
-DOCUMENTATION --> D02["02-Initial-Design.md"]
-DOCUMENTATION --> D03["03-Elastic-Deployment.md"]
-DOCUMENTATION --> D04["04-Elastic-Fleet-Deployment.md"]
-DOCUMENTATION --> D05["05-Windows-AD.md"]
-DOCUMENTATION --> D06["06-Windows-Agent.md"]
-DOCUMENTATION --> D07["07-Sysmon.md"]
-DOCUMENTATION --> D08["08-Elastic-Security.md"]
-DOCUMENTATION --> D09["09-Detection-Rules.md"]
-DOCUMENTATION --> D10["10-Incident-Response.md"]
+DOCUMENTATION --> D02["02-Network-Design.md"]
+DOCUMENTATION --> D03["03-Asset-Inventory.md"]
+DOCUMENTATION --> D04["04-Active-Directory.md"]
+DOCUMENTATION --> D05["05-Certificate-Authority.md"]
+DOCUMENTATION --> D06["06-Server-Build-Standards.md"]
+DOCUMENTATION --> D07["07-Elastic-Deployment.md"]
+DOCUMENTATION --> D08["08-Elastic-Fleet-Deployment.md"]
+DOCUMENTATION --> D09["09-Windows-Agent.md"]
+DOCUMENTATION --> D10["10-Linux-Agent.md"]
+DOCUMENTATION --> D11["11-Sysmon.md"]
+DOCUMENTATION --> D12["12-Elastic-Security.md"]
+DOCUMENTATION --> D13["13-Detection-Rules.md"]
+DOCUMENTATION --> D14["14-Vulnerability-Management.md"]
+DOCUMENTATION --> D15["15-Patch-Management.md"]
+DOCUMENTATION --> D16["16-Incident-Response.md"]
+DOCUMENTATION --> D17["17-Investigation-Runbooks.md"]
+DOCUMENTATION --> D18["18-Backup-Recovery.md"]
+DOCUMENTATION --> D19["19-Security-Hardening.md"]
+DOCUMENTATION --> D20["20-NIST-CSF-Mapping.md"]
 DOCUMENTATION --> D99["99-Lab-Journal.md"]
-DOCUMENTATION --> DIAGRAMS["diagrams/"]
-DOCUMENTATION --> SCREENSHOTS["screenshots/"]
-DOCUMENTATION --> CONFIGS["configs/"]
 ```
 ---
 
 # Documentation
 
-| Document                          | Description                                                                                                                                                   |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 01-Architecture.md                | Documents the overall architecture, infrastructure, networking, identity services, and system relationships.                                                  |
-| 02-Initial-Design.md              | Documents the original objectives, requirements, constraints, technology selections, and architectural decisions.                                             |
-| 03-Elastic-Deployment.md          | Documents the installation and deployment of Elasticsearch, Kibana, Docker, and the initial Elastic Stack environment.                                        |
-| 04-Elastic-Fleet-Deployment.md    | Documents Elastic Fleet deployment, Fleet Server configuration, Elastic Agent enrollment, agent policies, integrations, and centralized endpoint management.  |
-| 05-Windows-AD.md                  | Documents Active Directory, DNS, organizational structure, and identity management configuration.                                                             |
-| 06-Windows-Agent.md               | Documents the deployment, enrollment, and configuration of Elastic Agents on Windows endpoints.                                                               |
-| 07-Sysmon.md                      | Documents Sysmon installation, configuration, and Windows endpoint visibility improvements.                                                                   |
-| 08-Elastic-Security.md            | Documents Elastic Security configuration, including detections, alerts, cases, and analyst workflows.                                                         |
-| 09-Detection-Rules.md             | Documents custom detection rules, testing procedures, and MITRE ATT&CK mappings.                                                                              |
-| 10-Incident-Response.md           | Documents incident response workflows, investigations, evidence collection, and lessons learned.                                                              |
-| 99-Lab-Journal.md                 | Documents implementation progress, troubleshooting, design decisions, and lessons learned throughout the project.                                             |
+| Document                          | Description                                                                                                                                                           |
+|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 01-Architecture.md                | Overall lab architecture, physical hardware, virtualization layout, server roles, infrastructure components, and system relationships.                            |
+| 02-Network-Design.md              | Network architecture, IP addressing, DNS, communication flows, firewall requirements, segmentation, and network security considerations.                          |
+| 03-Asset-Inventory.md             | Inventory of physical devices, VMs, operating systems, hostnames, IP addresses, and system roles/ownership.                                                       |
+| 04-Active-Directory.md            | Active Directory architecture, OUs, users, groups, naming conventions, GPOs, authentication, and identity management.                                             |
+| 05-Certificate-Authority-PKI.md   | Enterprise CA, certificate templates, trust relationships, certificate lifecycle, and PKI implementation.                                                         |
+| 06-Server-Build-Standards.md      | Baseline configuration standards for Windows and Linux servers, including naming, security settings, and required services.                                       |
+| 07-Elastic-Deployment.md          | Elasticsearch and Kibana installation, configuration, cluster architecture, and core Elastic Stack infrastructure.                                                |
+| 08-Elastic-Fleet-Deployment.md    | Fleet Server, agent policies, integrations, enrollment, and centralized agent management.                                                                         |
+| 09-Windows-Agent.md               | Elastic Agent deployment, configuration, integrations, validation, and troubleshooting for Windows endpoints.                                                     |
+| 10-Linux-Agent.md                 | Elastic Agent deployment, configuration, integrations, validation, and troubleshooting for Linux systems.                                                         |
+| 11-Sysmon.md                      | Sysmon installation, configuration, event collection, telemetry, and Elastic integration.                                                                         |
+| 12-Elastic-Security.md            | Elastic Security configuration, detection alerting, dashboards, cases, investigations, and analyst workflows.                                                     |
+| 13-Detection-Rules.md             | The 30 custom detection rules, KQL, index patterns, severity, risk scores, MITRE ATT&CK mappings, validation status, tuning, and false-positive considerations.   |
+| 14-Vulnerability-Management.md    | Vulnerability scanning, risk prioritization, remediation workflows, and verification.                                                                             |
+| 15-Patch-Management.md            | WSUS deployment, update approvals, client targeting, maintenance windows, and patch compliance.                                                                   |
+| 16-Incident-Response.md           | Incident response lifecycle, alert triage, investigation, containment, eradication, recovery, and lessons learned.                                                |
+| 17-Investigation-Runbooks.md      | New. Step-by-step analyst procedures for investigating high-value alerts and detection scenarios.                                                                 |
+| 18-Backup-Recovery.md             | Backup strategy, VM recovery, file restoration, disaster recovery, and recovery validation.                                                                       |
+| 19-Security-Hardening.md          | Windows/Linux hardening, security baselines, auditing, logging, and defensive controls.                                                                           |
+| 20-NIST-CSF-Mapping.md            | Maps lab capabilities to the NIST Cybersecurity Framework and demonstrates alignment with enterprise security practices.                                          |
+| 99-Lab-Journal.md                 | Chronological implementation record, troubleshooting, design decisions, testing, snapshots, and future improvements.                                              |
+
 
 ---
 
@@ -144,28 +168,72 @@ DOCUMENTATION --> CONFIGS["configs/"]
 
 Status: Active Development
 
+## Documentation Status
+
+This project is actively under development. Documentation is published incrementally as individual lab components are implemented, validated, and tested.
+
+Completed documentation represents implemented and validated capabilities. Documents marked as in progress may contain partial configurations, design decisions, and planned implementation details.
+
+
+| Document                          | Status         | Notes                                                                                                                |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| 01-Architecture.md                | In Progress   | The published version of this document still reflects the original architecture.                                      |
+| 02-Network-Design.md              | Planned       |                                                                                                                       |
+| 03-Asset-Inventory.md             | Planned       |                                                                                                                       |
+| 04-Active-Directory.md            | In Progress   | The published version of this document still reflects the original architecture. This document has been renumbered.   |
+| 05-Certificate-Authority-PKI.md   | Planned       |                                                                                                                       |
+| 06-Server-Build-Standards.md      | Planned       |                                                                                                                       |
+| 07-Elastic-Deployment.md          | In Progress   | The published version of this document still reflects the original architecture. This document has been renumbered.   |
+| 08-Elastic-Fleet-Deployment.md    | In Progress   | The published version of this document still reflects the original architecture. This document has been renumbered.   |
+| 09-Windows-Agent.md               | Planned       |                                                                                                                       |
+| 10-Linux-Agent.md                 | Planned       |                                                                                                                       |
+| 11-Sysmon.md                      | Planned       |                                                                                                                       |
+| 12-Elastic-Security.md            | Planned       |                                                                                                                       |
+| 13-Detection-Rules.md             | In Progress   | This is pending final validations.                                                                                    |
+| 14-Vulnerability-Management.md    | Planned       |                                                                                                                       |
+| 15-Patch-Management.md            | Planned       |                                                                                                                       |
+| 16-Incident-Response.md           | Planned       |                                                                                                                       |
+| 17-Investigation-Runbooks.md      | Planned       |                                                                                                                       |
+| 18-Backup-Recovery.md             | Planned       |                                                                                                                       |
+| 19-Security-Hardening.md          | Planned       |                                                                                                                       |
+| 20-NIST-CSF-Mapping.md            | Planned       |                                                                                                                       |
+
+There are two additional documentation items to call out:
+
+- 02-Initial-Design.md - This is a document leftover from the original architecture. This will remain for now as it still contains useful data for the project, but it will be deprecated and removed.
+- Screenshots - These screenshots are all from the original architecture. They will be deprecated and removed.
+
+## Project Status
+
 Completed:
 
 - Initial project planning
-- Architecture documentation
+- Windows DC Server deployment
+- Active Directory deployment
+- Rocky Linux deployment
 - Initial design documentation
 - Elastic Stack deployment
-- Active Directory deployment
-
-In Progress:
-
+- PKI Configuration
+- Windows Workstation deployment
 - Fleet configuration
 - Windows endpoint deployment
 - Elastic Agent enrollment
+- Sysmon deployment
+- Initial detection engineering implementation
+- Initial incident response workflows
+
+In Progress:
+
+- Kali Linux deployment
+- Attack simulation
+
 
 Planned:
 
-- Sysmon deployment
-- Detection engineering
-- Incident response workflows
 - Threat hunting scenarios
-- Attack simulation
 - Additional Windows and Linux systems
+
+---
 
 # Learning Goals
 
@@ -181,6 +249,8 @@ This project is intended to develop practical experience with:
 - MITRE ATT&CK Framework
 - Incident Response
 - Security Operations Center (SOC) Workflows
+
+---
 
 # Skills Demonstrated
 
@@ -217,6 +287,7 @@ This project demonstrates practical experience with:
 - Threat hunting
 - Security investigations
 - Incident response workflows
+- Public Key Infrastructure
 
 ## Documentation
 
@@ -226,6 +297,8 @@ This project demonstrates practical experience with:
 - Configuration management
 - Troubleshooting documentation
 
+---
+
 # Future Enhancements
 
 Planned improvements include:
@@ -233,13 +306,14 @@ Planned improvements include:
 - Deploy additional Windows workstations
 - Deploy additional Linux servers
 - Add Kali Linux attack workstation
-- Deploy Sysmon across Windows systems
-- Create custom Elastic detection rules
-- Implement MITRE ATT&CK mappings
-- Simulate common attack scenarios
 - Develop threat hunting playbooks
 - Expand incident response documentation
 - Automate portions of the deployment process
+- Complete remaining attack simulation scenarios and validation
+- Finalize and tune detection rules
+- Expand MITRE ATT&CK coverage
+
+---
 
 # Screenshots
 
@@ -267,6 +341,7 @@ Planned screenshots include:
 - Detection rule execution
 - Timeline investigations
 - Host activity views
+- Certificate Authority
 
 ## Lab Infrastructure
 
@@ -280,7 +355,7 @@ Planned screenshots include:
 
 This repository documents the design, deployment, and operation of an Elastic Stack SIEM home lab.
 
-The documentation is organized to follow the same order used during the original implementation, allowing the environment to be recreated from scratch.
+The documentation is being organized to provide a reproducible reference for deploying and operating the environment. As the architecture is redesigned, some earlier documentation remains as historical reference and will be updated or deprecated.
 
 Each document builds upon the previous one and includes explanations of both the implementation steps and the reasoning behind key design decisions.
 
@@ -310,6 +385,8 @@ Minimum recommended:
 This lab was designed around:
 
 - Intel Mac Mini (16GB RAM)
+- Intel Mac Mini (8GB RAM)
+- Intel MacBook Pro (8GB RAM)
 - Apple Silicon MacBook Air (32GB RAM)
 
 ## Deployment Order
@@ -317,30 +394,25 @@ This lab was designed around:
 The documentation is organized in the recommended review order used to understand, deploy, and operate the environment.
 
 1. Architecture
-
 2. Initial Design
-
 3. Elastic Deployment
-
 4. Elastic Fleet Deployment
-
 5. Windows Active Directory
-
 6. Windows Agent Deployment
-
 7. Sysmon
-
 8. Elastic Security
-
 9. Detection Rules
-
 10. Incident Response
 
 The Lab Journal documents the complete implementation timeline and troubleshooting process throughout the project.
 
+---
+
 # Disclaimer
 
 This environment is intended solely for educational, research, and portfolio purposes. All systems are deployed within a controlled home lab environment and are not intended for production use.
+
+---
 
 # Author
 
