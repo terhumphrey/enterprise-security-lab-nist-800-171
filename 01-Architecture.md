@@ -3,10 +3,10 @@
 | Field						 | Value 						  		    				|
 |---------------------------|-----------------------------------------------------------|
 | Document Name 	| ELK Stack SIEM Home Lab Architecture	 							|
-| Document Version 	| v0.1.1 															|
+| Document Version 	| v0.2.0 															|
 | Author			| Terry Humphrey 													|
 | Status 		 	| Active 															|
-| Last Updated 		| 2026-07-10 														|
+| Last Updated 		| 2026-07-22 														|
 
 ---
 
@@ -98,20 +98,34 @@ Systems are deployed with logging and detection capabilities as a priority.
 
 ```mermaid
 graph TD
-	subgraph MacMini[Mac Mini Late 2014 - macOS Monterey]
-  		subgraph Hypervisor[VirtualBox]
-  			subgraph ElasticStackVM[Rocky Linux 9.8 VM]
-			end
-			subgraph Win25DC[Windows 2025 Domain Controller VM]
-			end
-		end
-	end
-	subgraph MBA[Macbook Air 2025 - macOS 26]
-		subgraph MBAHypervisor[VirtualBox]
-			subgraph Win11Pro1[Windows 11 Pro Workstation 1]
-			end
-		end
-	end
+
+    subgraph MacMini2014["Mac Mini Late 2014 - macOS Monterey"]
+        subgraph HypervisorMac["VirtualBox"]
+            subgraph Win25DC["Windows Server 2025 Domain Controller VM"]
+            end
+        end
+    end
+
+    subgraph WindowsMacMini["Mac Mini Late 2014 - Windows 10 Home"]
+        subgraph HypervisorWindows["VirtualBox"]
+            subgraph ElasticStackVM["Rocky Linux 9.8 VM"]
+            end
+        end
+    end
+
+    subgraph MBA["MacBook Air 2025 - macOS 26"]
+        subgraph MBAHypervisor["VirtualBox"]
+            subgraph Win11Pro1["Windows 11 Pro Workstation 1"]
+            end
+        end
+    end
+
+    subgraph MBP["MacBook Pro 2015 - macOS Monterey"]
+        subgraph MBPHypervisor["VirtualBox"]
+            subgraph Future["Reserved for Future Expansion"]
+            end
+        end
+    end
 ```
 
 ---
@@ -122,32 +136,39 @@ graph TD
 
 ```mermaid
 graph TD
-	subgraph MacMini[Mac Mini Late 2014 - macOS Monterey]
-  		subgraph VBOX[VirtualBox]
-  			subgraph ElasticStackVM[Rocky Linux 9.8 VM]
-  				subgraph DockerEngine[Docker]
-  					ES[Elasticsearch Container]
-  					Kibana[Kibana Container]
-  				end
-  				Fleet["Elastic Agent<br/>Fleet Server"]
-  			end
-  			subgraph Win25DC[Windows 2025 Domain Controller VM]
-  			end
-  		end
- 	end
-	subgraph MBA[Macbook Air 2025 - macOS 26]
-		subgraph VBOX2[VirtualBox]
-			subgraph Win11Pro1[Windows 11 Pro Workstation 1]
-				W11P1AG[Fleet Agent]
-			end
-		end
-	end
-	
-	Win11Pro1 --> Win25DC	
-	Win11Pro1 --> Fleet
-	Win25DC --> Fleet
-	Fleet --> ES
-	ES --> Kibana
+
+    subgraph WindowsMacMini["Mac Mini Late 2014 - Windows 10 Home"]
+        subgraph VBOX_ELK["VirtualBox"]
+            subgraph ElasticStackVM["Rocky Linux 9.8 VM"]
+                subgraph DockerEngine["Docker"]
+                    ES["Elasticsearch Container"]
+                    Kibana["Kibana Container"]
+                end
+                Fleet["Elastic Agent / Fleet Server"]
+            end
+        end
+    end
+
+    subgraph MacMini2014["Mac Mini Late 2014 - macOS Monterey"]
+        subgraph VBOX_DC["VirtualBox"]
+            subgraph Win25DC["Windows Server 2025 Domain Controller VM"]
+            end
+        end
+    end
+
+    subgraph MBA["MacBook Air 2025 - macOS 26"]
+        subgraph VBOX_MBA["VirtualBox"]
+            subgraph Win11Pro1["Windows 11 Pro Workstation 1"]
+                W11P1AG["Elastic Agent"]
+            end
+        end
+    end
+
+    Win11Pro1 -->|Domain Services / DNS| Win25DC
+    Win11Pro1 -->|Telemetry| Fleet
+    Win25DC -->|Telemetry| Fleet
+    Fleet -->|Data Ingestion| ES
+    ES -->|Data Query| Kibana
  ```
 
 ---
@@ -170,9 +191,9 @@ Due to SSH connectivity requirements and existing network addressing within my h
 
 | Host 				| IP 							| Purpose 			|
 | ------------------|-------------------------------|-------------------|
-| elastic-node-01 	| 192.168.1.220 (Port 2222) 	| Elastic Stack 	| 
-| WIN2025-01		| 192.168.1.53 					| Domain Controller | 
-| WIN11PRO-01 		| DHCP						 	| Workstation 		|
+| LNX-ELK-01     	| 192.168.1.44                  | Elastic Stack 	| 
+| WIN-DC-01		    | 192.168.1.10 					| Domain Controller | 
+| WIN-PRO-01 		| DHCP						 	| Workstation 		|
 | kali-01 			| TBD 							| Attacker			|
 
 ---
@@ -198,9 +219,9 @@ Due to SSH connectivity requirements and existing network addressing within my h
 
 | Hostname 			| Operating System 		| Role 							| Status 		|
 |-------------------|-----------------------|-------------------------------|---------------|
-| elastic-node-01	| Rocky Linux 9.8 		| Elastic Stack/Fleet Server	| Active 		|
-| WIN2025-01 		| Windows Server 2025	| Domain Controller 			| Active 		|
-| WIN11PRO-01 		| Windows 11 Pro 		| User Workstation 				| In Progress 	|
+| LNX-ELK-01    	| Rocky Linux 9.8 		| Elastic Stack/Fleet Server	| Active 		|
+| WIN-DC-01 		| Windows Server 2025	| Domain Controller 			| Active 		|
+| WIN-PRO-01 		| Windows 11 Pro 		| User Workstation 				| Active     	|
 
 ---
 
@@ -219,7 +240,7 @@ The Active Directory domain provides centralized authentication, authorization, 
 | Domain Name 					| serenity.lab 						|
 | Forest Functional Level 		| Windows Server 2025 				|
 | Domain Functional Level 		| Windows Server 2025 				|
-| Primary Domain Controller 	| WIN2025-01 						|
+| Primary Domain Controller 	| WIN-DC-01 						|
 | DNS Role						| Active Directory Integrated DNS	|
 
 
@@ -296,8 +317,8 @@ flowchart LR
     SOC["SOC Analyst"]
 
     Endpoint --> Agent
-    Agent --> Fleet
-    Fleet --> ES
+    Fleet -.->|Manages| Agent
+    Agent -->|Telemetry| ES
     ES --> Kibana
     Kibana --> SOC
 ```
@@ -334,13 +355,13 @@ Primary Data Sources:
 
 ## Hostnames
 
-| Resource 				| Standard 						| Example 			|
-|-----------------------|-------------------------------|-------------------|
-| Windows Servers 		| WIN2025-XX 					| WIN2025-01		|  
-| Windows Workstations	| WIN11PRO-XX 					| WIN11PRO-01		|
-| Linux Servers			| lowercase descriptive names	| elastic-node-01	|
-| Agent Policies		| Function-based naming			| Windows Servers	|
-| Dashboards			| Functional prefix 			| SOC - Overview	|
+| Resource 				| Standard 			| Example                                   			|
+|-----------------------|-------------------|-------------------------------------------------------|
+| Windows Servers 		| WIN-FUNCTION-XX   | WIN-DC-01 		                                    |  
+| Windows Workstations	| WIN-PRO-XX        | WIN-PRO-01		                                    |
+| Linux Servers			| LNX-FUNCTION-XX   | LNX-ELK-01                                            |
+| Agent Policies		| POL-FUNCTION      | POL-Windows-Servers                                   |
+| Dashboards			| DB-XXX-Function   | DB-001 - Windows Security & Authentication Overview   |
 
 ## Agent Policies
 - Windows Servers
@@ -382,27 +403,37 @@ Current Controls:
 - Kali Linux attack simulation workstation
 - Additional Windows workstations
 - Additional Linux servers
-- Sysmon deployment
-- Custom detection rules
 - Threat hunting scenarios
 
 ---
 
 # 15. Related Documentation
 
-| Document 							| Purpose 																																						|
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| README.md							| Provides a high-level overview of the ELK Stack SIEM Home Lab, including objectives, architecture, technologies, and documentation index.						|
-| 02-Initial-Design.md				| Documents the original objectives, requirements, constraints, technology selections, and architectural decisions.												|
-| 03-Elastic-Deployment.md 			| Documents the installation and deployment of Elasticsearch, Kibana, Docker, and the initial Elastic Stack environment.										|
-| 04-Elastic-Fleet-Deployment.md    | Documents Elastic Fleet deployment, Fleet Server configuration, Elastic Agent enrollment, agent policies, integrations, and centralized endpoint management.  |
-| 05-Windows-AD.md 					| Documents Active Directory, DNS, organizational structure, and identity management configuration.																|
-| 06-Windows-Agent.md 				| Documents the deployment, enrollment, and configuration of Elastic Agents on Windows endpoints.																|
-| 07-Sysmon.md 						| Documents Sysmon installation, configuration, and Windows endpoint visibility improvements.																	|
-| 08-Elastic-Security.md 			| Documents Elastic Security configuration, including detections, alerts, cases, and analyst workflows.															|
-| 09-Detection-Rules.md 			| Documents custom detection rules, testing procedures, and MITRE ATT&CK mappings.																				|
-| 10-Incident-Response.md 			| Documents incident response workflows, investigations, evidence collection, and lessons learned.																|
-| 99-Lab-Journal.md					| Documents lab progress, implementation activities, troubleshooting, decisions, and lessons learned.															|
+
+| Document                          | Purpose                                                                                                                                                           |
+|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| README.md                         | High-level overview of the Enterprise Security Lab, objectives, architecture, technologies, hardware inventory, capabilities, and documentation index.            |
+| 01-Architecture.md                | Overall lab architecture, physical hardware, virtualization layout, server roles, infrastructure components, and system relationships.                            |
+| 02-Network-Design.md              | Network architecture, IP addressing, DNS, communication flows, firewall requirements, segmentation, and network security considerations.                          |
+| 03-Asset-Inventory.md             | Inventory of physical devices, VMs, operating systems, hostnames, IP addresses, and system roles/ownership.                                                       |
+| 04-Active-Directory.md            | Active Directory architecture, OUs, users, groups, naming conventions, GPOs, authentication, and identity management.                                             |
+| 05-Certificate-Authority-PKI.md   | Enterprise CA, certificate templates, trust relationships, certificate lifecycle, and PKI implementation.                                                         |
+| 06-Server-Build-Standards.md      | Baseline configuration standards for Windows and Linux servers, including naming, security settings, and required services.                                       |
+| 07-Elastic-Deployment.md          | Elasticsearch and Kibana installation, configuration, cluster architecture, and core Elastic Stack infrastructure.                                                |
+| 08-Elastic-Fleet-Deployment.md    | Fleet Server, agent policies, integrations, enrollment, and centralized agent management.                                                                         |
+| 09-Windows-Agent.md               | Elastic Agent deployment, configuration, integrations, validation, and troubleshooting for Windows endpoints.                                                     |
+| 10-Linux-Agent.md                 | Elastic Agent deployment, configuration, integrations, validation, and troubleshooting for Linux systems.                                                         |
+| 11-Sysmon.md                      | Sysmon installation, configuration, event collection, telemetry, and Elastic integration.                                                                         |
+| 12-Elastic-Security.md            | Elastic Security configuration, detection alerting, dashboards, cases, investigations, and analyst workflows.                                                     |
+| 13-Detection-Rules.md             | The 30 custom detection rules, KQL, index patterns, severity, risk scores, MITRE ATT&CK mappings, validation status, tuning, and false-positive considerations.   |
+| 14-Vulnerability-Management.md    | Vulnerability scanning, risk prioritization, remediation workflows, and verification.                                                                             |
+| 15-Patch-Management.md            | WSUS deployment, update approvals, client targeting, maintenance windows, and patch compliance.                                                                   |
+| 16-Incident-Response.md           | Incident response lifecycle, alert triage, investigation, containment, eradication, recovery, and lessons learned.                                                |
+| 17-Investigation-Runbooks.md      | New. Step-by-step analyst procedures for investigating high-value alerts and detection scenarios.                                                                 |
+| 18-Backup-Recovery.md             | Backup strategy, VM recovery, file restoration, disaster recovery, and recovery validation.                                                                       |
+| 19-Security-Hardening.md          | Windows/Linux hardening, security baselines, auditing, logging, and defensive controls.                                                                           |
+| 20-NIST-CSF-Mapping.md            | Maps lab capabilities to the NIST Cybersecurity Framework and demonstrates alignment with enterprise security practices.                                          |
+| 99-Lab-Journal.md                 | Chronological implementation record, troubleshooting, design decisions, testing, snapshots, and future improvements.                                              |
 
 ---
 
@@ -412,7 +443,7 @@ Current Controls:
 |-----------|---------------|-----------------------------------------------|
 | v0.1.0	| 2026-07-09	| Initial architecture documentation published	|
 | v0.1.1	| 2026-07-10	| Updated Related documentation section.		|
-
+| v0.2.0    | 2026-07-22    | Updated to reflect new architecture design    |
 ---	
 
 
