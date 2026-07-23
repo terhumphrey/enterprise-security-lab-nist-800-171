@@ -177,7 +177,7 @@ Completed documentation represents implemented and validated capabilities. Docum
 
 | Document                          | Status        | Notes                                                                                                                 |
 |-----------------------------------|---------------|-----------------------------------------------------------------------------------------------------------------------|
-| 01-Architecture.md                | In Progress   | The published version of this document still reflects the original architecture.                                      |
+| 01-Architecture.md                | Completed     |                                                                                                                       |
 | 02-Network-Design.md              | Planned       |                                                                                                                       |
 | 03-Asset-Inventory.md             | Planned       |                                                                                                                       |
 | 04-Active-Directory.md            | In Progress   | The published version of this document still reflects the original architecture. This document has been renumbered.   |
@@ -189,7 +189,7 @@ Completed documentation represents implemented and validated capabilities. Docum
 | 10-Linux-Agent.md                 | Planned       |                                                                                                                       |
 | 11-Sysmon.md                      | Planned       |                                                                                                                       |
 | 12-Elastic-Security.md            | Planned       |                                                                                                                       |
-| 13-Detection-Rules.md             | In Progress   | This is pending final validations.                                                                                    |
+| 13-Detection-Rules.md             | Completed     |                                                                                                                       |
 | 14-Vulnerability-Management.md    | Planned       |                                                                                                                       |
 | 15-Patch-Management.md            | Planned       |                                                                                                                       |
 | 16-Incident-Response.md           | Planned       |                                                                                                                       |
