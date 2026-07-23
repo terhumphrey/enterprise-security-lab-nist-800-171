@@ -178,7 +178,7 @@ Completed documentation represents implemented and validated capabilities. Docum
 | Document                          | Status        | Notes                                                                                                                 |
 |-----------------------------------|---------------|-----------------------------------------------------------------------------------------------------------------------|
 | 01-Architecture.md                | Completed     |                                                                                                                       |
-| 02-Network-Design.md              | Planned       |                                                                                                                       |
+| 02-Network-Design.md              | Completed     |                                                                                                                       |
 | 03-Asset-Inventory.md             | Planned       |                                                                                                                       |
 | 04-Active-Directory.md            | In Progress   | The published version of this document still reflects the original architecture. This document has been renumbered.   |
 | 05-Certificate-Authority-PKI.md   | Planned       |                                                                                                                       |
