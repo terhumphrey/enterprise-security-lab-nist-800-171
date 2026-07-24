@@ -179,13 +179,13 @@ Completed documentation represents implemented and validated capabilities. Docum
 |-----------------------------------|---------------|-----------------------------------------------------------------------------------------------------------------------|
 | 01-Architecture.md                | Completed     |                                                                                                                       |
 | 02-Network-Design.md              | Completed     |                                                                                                                       |
-| 03-Asset-Inventory.md             | Planned       |                                                                                                                       |
-| 04-Active-Directory.md            | In Progress   | The published version of this document still reflects the original architecture. This document has been renumbered.   |
+| 03-Asset-Inventory.md             | Completed     |                                                                                                                       |
+| 04-Active-Directory.md            | Completed     |                                                                                                                       |
 | 05-Certificate-Authority-PKI.md   | Planned       |                                                                                                                       |
 | 06-Server-Build-Standards.md      | Planned       |                                                                                                                       |
-| 07-Elastic-Deployment.md          | In Progress   | The published version of this document still reflects the original architecture. This document has been renumbered.   |
-| 08-Elastic-Fleet-Deployment.md    | In Progress   | The published version of this document still reflects the original architecture. This document has been renumbered.   |
-| 09-Windows-Agent.md               | Planned       |                                                                                                                       |
+| 07-Elastic-Deployment.md          | Completed     |                                                                                                                       |
+| 08-Elastic-Fleet-Deployment.md    | Completed     |                                                                                                                       |
+| 09-Windows-Agent.md               | Completed     |                                                                                                                       |
 | 10-Linux-Agent.md                 | Planned       |                                                                                                                       |
 | 11-Sysmon.md                      | Planned       |                                                                                                                       |
 | 12-Elastic-Security.md            | Planned       |                                                                                                                       |
@@ -198,9 +198,8 @@ Completed documentation represents implemented and validated capabilities. Docum
 | 19-Security-Hardening.md          | Planned       |                                                                                                                       |
 | 20-NIST-CSF-Mapping.md            | Planned       |                                                                                                                       |
 
-There are two additional documentation items to call out:
+There are one additional documentation item to call out:
 
-- 02-Initial-Design.md - This is a document leftover from the original architecture. This will remain for now as it still contains useful data for the project, but it will be deprecated and removed.
 - Screenshots - These screenshots are all from the original architecture. They will be deprecated and removed.
 
 ## Project Status
@@ -312,6 +311,7 @@ Planned improvements include:
 - Complete remaining attack simulation scenarios and validation
 - Finalize and tune detection rules
 - Expand MITRE ATT&CK coverage
+- Build Guides
 
 ---
 
