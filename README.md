@@ -181,19 +181,19 @@ Completed documentation represents implemented and validated capabilities. Docum
 | 02-Network-Design.md              | Completed     |                                                                                                                       |
 | 03-Asset-Inventory.md             | Completed     |                                                                                                                       |
 | 04-Active-Directory.md            | Completed     |                                                                                                                       |
-| 05-Certificate-Authority-PKI.md   | Planned       |                                                                                                                       |
-| 06-Server-Build-Standards.md      | Planned       |                                                                                                                       |
+| 05-Certificate-Authority-PKI.md   | Complete      |                                                                                                                       |
+| 06-Server-Build-Standards.md      | Complete      |                                                                                                                       |
 | 07-Elastic-Deployment.md          | Completed     |                                                                                                                       |
 | 08-Elastic-Fleet-Deployment.md    | Completed     |                                                                                                                       |
 | 09-Windows-Agent.md               | Completed     |                                                                                                                       |
-| 10-Linux-Agent.md                 | Planned       |                                                                                                                       |
-| 11-Sysmon.md                      | Planned       |                                                                                                                       |
-| 12-Elastic-Security.md            | Planned       |                                                                                                                       |
+| 10-Linux-Agent.md                 | Completed     |                                                                                                                       |
+| 11-Sysmon.md                      | Completed     |                                                                                                                       |
+| 12-Elastic-Security.md            | Completed     |                                                                                                                       |
 | 13-Detection-Rules.md             | Completed     |                                                                                                                       |
 | 14-Vulnerability-Management.md    | Planned       |                                                                                                                       |
 | 15-Patch-Management.md            | Planned       |                                                                                                                       |
 | 16-Incident-Response.md           | Planned       |                                                                                                                       |
-| 17-Investigation-Runbooks.md      | Planned       |                                                                                                                       |
+| 17-Investigation-Runbooks.md      | In Progress   |                                                                                                                       |
 | 18-Backup-Recovery.md             | Planned       |                                                                                                                       |
 | 19-Security-Hardening.md          | Planned       |                                                                                                                       |
 | 20-NIST-CSF-Mapping.md            | Planned       |                                                                                                                       |
