@@ -1,18 +1,19 @@
 # SIEM Lab Journal
 
-**Current Version:** v0.5.0
-**Last Updated:** 2026-07-17
+**Current Version:** v0.7.0
+**Last Updated:** 2026-07-29
 
 ## Version History
 
 | Version       | Date          | Highlights                    |
 |---------------|---------------|-------------------------------|
-| v0.1.0		| 2026-07-02    | Intitial Setup                |
+| v0.1.0		| 2026-07-02    | Initial Setup                 |
 | v0.2.0		| 2026-07-06    | Elastic Setup                 |
 | v0.3.0		| 2026-07-07    | Windows Deployment            |
 | v0.4.0        | 2026-07-13    | AD Structure                  |
 | v0.5.0        | 2026-07-17    | Lab Architecture Redesign     |
-| v.6.0         | 2026-07-20    | Sysmon and Detection Rules    |
+| v0.6.0        | 2026-07-20    | Sysmon and Detection Rules    |
+| v0.7.0        | 2026-07-29    | Completed main lab            |
 
 ## Overall Status
 
@@ -25,27 +26,57 @@
 | Fleet Server                          | Finished and Validated |
 | Elastic Agent                         | Finished and Validated |
 | System Integration                    | Finished and Validated |
-| Linux Log Collection                  | Not Started            |
-| Linux Metrics                         | Not Started            |
-| Custom Dashboards                     | Currently Being Built  |
+| Linux Log Collection                  | Finished and Validated |
+| Linux Metrics                         | Finished and Validated |
+| Custom Dashboards                     | Finished and Validated |
 | Windows Server 2025 Deployment        | Finished and Validated |
 | Windows Server 2025 DC Promo          | Finished and Validated |
 | Windows 11 Workstation Deployment     | Finished and Validated |
 | Windows 11 Workstation Configuration  | Finished and Validated |
 | Sysmon                                | Finished and Validated |
 | Detection Rules Phase 1               | Finished and Validated |
-| Attack Simulations                    | Waiting on Dependency  |
+| Attack Simulations                    | Finished and Validated |
+| Phase 2 Planning                      | Not Started            |
+| Documentation                         | In Progress            |
 ---
 
-# Current Architecture
+## Lab Statistics
+
+| Metric                            | Value             |
+|-----------------------------------|-------------------|
+| Physical Hosts                    | 4                 |
+| Virtual Machines                  | 6                 |
+| Windows Servers                   | 2                 |
+| Windows Workstations              | 1                 |
+| Linux Servers                     | 2                 |
+| Linux Attack Machines             | 1                 |
+| Active Directory Forests          | 1                 |
+| Active Directory Domains          | 1                 |
+| Elastic Stack Deployments         | 1                 |
+| Fleet Servers                     | 1                 |
+| Elastic Agents Deployed           | 5                 |
+| Elastic Integrations Configured   | 6                 |
+| Detection Rules Created           | 30                |
+| Detection Rules Validated         | 30                |
+| Attack Simulations Validated      | 30                |
+| Custom Dashboards                 | 6                 |
+| Documentation Files               | 20                |
+| Project Status                    | Phase 1 Complete  |
+
+---
+
+# Final Lab Architecture
 
 ## Infrastructure
 
 | System        | Role                                                              |
 |---------------|-------------------------------------------------------------------|
 | WIN-DC-01     | Windows Server 2025 Domain Controller, DNS, Certificate Authority |
-| WIN-CLIENT-01 | Windows 11 Domain Joined Workstation                              |
+| WIN-PRO-01    | Windows 11 Domain Joined Workstation                              |
 | LNX-ELK-01    | Rocky Linux 9 ELK SIEM Platform                                   |
+| WIN-WSUS-01   | Windows Server 2025 WSUS Server and File Server                   |
+| LNX-WEB-01    | Rocky Linux 9 Web Server and MariaDB Server                       |
+| LNX-KALI-01   | Kali Linux simulated attack server                                |
 
 ## Security Stack
 
@@ -57,7 +88,55 @@
 | Elastic Agent     | Endpoint telemetry collection |
 | Microsoft AD CS   | Internal PKI                  |
 
-# Journal Entries
+
+## 2026-07-29
+
+### Completed
+- Created OUs, Users, and Groups
+- Combined File Server and WSUS Server into a single machine
+- Validated security rules
+- Simulated Kali Linux attacks
+- Validated attacks and monitoring
+
+### Issues Encountered
+- Some Users and Groups were not created through the PowerShell script
+- Due to resource constraints, the WSUS and File Server kept crashing
+- Some alerts were not immediately visible due to detection rule configuration and Kibana query validation.
+
+
+### Lessons Learned
+- PowerShell can be very sensitive to Syntax
+- In lab environments, you may have to redesign in order to meet your targets
+- Kibana queries are case sensitive, particularly when searching hostnames and fields.
+
+
+### Next Steps
+- Complete documentation
+- Start Phase 2 Planning
+
+
+## 2026-07-27
+
+### Completed
+- Deployment of WSUS Server
+- Deployment of File Server
+- Deployment of Linux Web/Database Server
+- Elastic Configuration of Linux Web Server
+
+### Issues Encountered
+- Alerts not triggering for MariaDB
+- Server not registering in WSUS
+
+### Lessons Learned
+- MariaDB requires extra work to expose to Kibana
+- Servers may need extra time to register into my lab environment due to resource constraints
+
+### Next Steps
+- Configure OUs, Groups, Users
+- Complete the FS configuration
+- Install Elastic Agent on WSUS and FS servers
+
+
 
 ## 2026-07-20
 
@@ -66,7 +145,7 @@
 - Detection Rules setup and validated
 
 ### Issues Encountered
-- Alerts not triggering for Powershell
+- Alerts not triggering for PowerShell
 
 ### Lessons Learned
 - Syntax is very strict when it comes to building log sources and queries.
@@ -91,7 +170,6 @@ The original lab was intentionally built with a smaller scope while I was learni
 
 The evening of 2026-07-15 and all day on 2026-07-16 were dedicated to rebuilding and validating the redesigned environment. These activities are consolidated into this journal entry.
 
-Note: The Overall Status section above has not yet been fully updated to reflect all components of the redesigned architecture.
 
 
 ### Completed
@@ -109,7 +187,7 @@ Note: The Overall Status section above has not yet been fully updated to reflect
 
 ### Issues Encountered
 - Certificate trust configuration required additional troubleshooting during endpoint enrollment.
-- Original architecture required redesign due to expanded project scope. Various issues are going to be included in the updated documentation
+- Original architecture required redesign due to expanded project scope. 
 
 
 ### Lessons Learned
@@ -139,18 +217,20 @@ Note: The Overall Status section above has not yet been fully updated to reflect
 - VirtualBox requires additional add-ons to be installed for the display driver to function properly.
 
 ### Next Steps
-- 
+- Create Active Directory Organizational Units
+- Create Security Groups
+- Create Users
 
 
 ## 2026-07-13
 
 ### Completed
-- OU Creation Powershell Script Created
-- Security Group Creation Powershell Script Created
-- User Creation and Group Assignment Powershell Script Created
+- OU Creation PowerShell Script Created
+- Security Group Creation PowerShell Script Created
+- User Creation and Group Assignment PowerShell Script Created
 - OUs Created
 - Security Groups created
-- Users Assigned to Groups
+- Users Assigned to Security Groups
 
 ### Issues Encountered
 
@@ -168,23 +248,18 @@ During initial Active Directory automation, default AD containers (CN=Users and 
 ## 2026-07-07
 
 ### Completed
-- Deployed Windows 2025 Server
-- Promoted Windows 2025 Server as a Domain Controller
+- Deployed Windows Server 2025
+- Promoted Windows Server 2025 as a Domain Controller
 - Deployed Windows 11 Pro workstation
-- 
-- 
-- 
-- 
-- 
-- 
+
 
 ### Issues Encountered
 - Server manager hangs on Windows 2025 while attempting to install AD roles
-- 
+
 
 ### Lessons Learned
-- Powershell can bypass the Server Manager to install and promote Windows 2025 as a DC
--  
+- PowerShell can bypass the Server Manager to install and promote Windows 2025 as a DC
+
 
 ### Next Steps
  - AD OU Creation
@@ -225,7 +300,7 @@ During initial Active Directory automation, default AD containers (CN=Users and 
 
 ### Completed
 - Installed Rocky Linux 9.8
-- Installed Docker Engine and Docker Compose
+- Installed Docker Engine and Docker Compose Plugin
 - Created '.env'
 
 ### Issues Encountered
